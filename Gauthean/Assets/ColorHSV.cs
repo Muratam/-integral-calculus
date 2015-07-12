@@ -10,23 +10,6 @@ namespace UnityEngine {
     public static class ColorHSV {
 
 
-        /// <summary>
-        /// HSV色空間による指定でUnityEngine.Colorを作成します。
-        /// </summary>
-        /// <param name="h">色相(Hue) 0-360</param>
-        /// <param name="s">彩度(Saturation) 0-255</param>
-        /// <param name="v">明度(Value) 0-255</param>
-        /// <returns></returns>
-        public static Color FromHsv(int h, float s, float v) {
-            while (h >= 360) h -= 360;
-            while (h < 0) h += 360;
-            if (s > 1) s = 1;
-            if (s < 0) s = 0;
-            if (v > 1) v = 1;
-            if (v < 0) v = 0;
-
-            return FromHsv((float)h, (float)s, (float)v);
-        }
 
         /// <summary>
         /// HSV色空間による指定でUnityEngine.Colorを作成します。
@@ -35,13 +18,13 @@ namespace UnityEngine {
         /// <param name="s">彩度(Saturation) 0.0-1.0</param>
         /// <param name="v">明度(Value) 0.0-1.0</param>
         /// <returns></returns>
-        private static Color FromHsv(float h, float s, float v) {
-            if (h > 360.0) throw new ArgumentOutOfRangeException("h", h, "0～360で指定してください。");
-            if (h < 0.0) throw new ArgumentOutOfRangeException("h", h, "0～360で指定してください。");
-            if (s > 1.0) throw new ArgumentOutOfRangeException("s", s, "0.0～1.0で指定してください。");
-            if (s < 0.0) throw new ArgumentOutOfRangeException("s", s, "0.0～1.0で指定してください。");
-            if (v > 1.0) throw new ArgumentOutOfRangeException("v", v, "0.0～1.0で指定してください。");
-            if (v < 0.0) throw new ArgumentOutOfRangeException("v", v, "0.0～1.0で指定してください。");
+        public static Color FromHsv(float h, float s, float v) {
+            while (h >= 360) h -= 360;
+            while (h < 0) h += 360;
+            if (s > 1) s = 1;
+            if (s < 0) s = 0;
+            if (v > 1) v = 1;
+            if (v < 0) v = 0;
 
             Color resColor = Color.clear;
 
